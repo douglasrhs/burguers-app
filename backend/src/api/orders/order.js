@@ -5,7 +5,8 @@ const productSchema = new mongoose.Schema({
     name: { type: String, required: true},
     price: { type: Number, min:0, required: true},
     description: { type: String, default: 'No description'},
-    available: { type: Boolean, default: true}
+    available: { type: Boolean, default: true},
+    category: { type: String, required: true, enum:['LANCHES','BEBIDAS','PIZZAS']}
 })
 
 const itemOrderSchema = new mongoose.Schema({
@@ -26,7 +27,9 @@ const orderSchema = new mongoose.Schema({
     timeOrder: { type: Date, required:true, default: Date.now },
     rateDelivery: { type: Number, min: 0},
     status: { type: String, required: true, 
-        enum:['INICIADO', 'AGUARDANDO', 'A CAMINHO', 'FINALIZADO']}
+        enum:['INICIADO', 'AGUARDANDO', 'A CAMINHO', 'FINALIZADO']},
+    orderPay: { type: String, required: true,
+        enum:['PAGO', 'NÃO PAGO']}
 })
 
 module.exports = restful.model('Order', orderSchema)
