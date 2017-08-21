@@ -10,8 +10,12 @@ module.exports = function(server){
     // Rota Inicial http://localhost:3000/
     
     // Rotas Orders
-    const Orders = require('../api/orders/orderServices')
-    Orders.register(router, '/orders')
+    const Orders = require('../api/users/userServices')
+    Orders.register(router, '/users')
+
+    // Rotas Products
+    const Products = require('../api/products/productServices')
+    Products.register(router, '/products')
     
 
 }
