@@ -8,7 +8,10 @@ module.exports = function(server){
     server.use('/api', router)
 
     // Rota Inicial http://localhost:3000/
-    
+    server.get('/',function(req, res){
+        res.end('Bem-vindo a API burguerapp em NodeJs \nWelcome \n\nEndpoints: \n /api/users \n /api/products');
+    });
+
     // Rotas Orders
     const Orders = require('../api/users/userServices')
     Orders.register(router, '/users')
